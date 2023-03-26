@@ -16,7 +16,6 @@ fn main() {
         let line = line.unwrap();
 
         if line.trim().is_empty() {
-            println!("{}", total_calories);
             v_calories.push(total_calories);
             total_calories = 0;
         } else {
@@ -26,10 +25,16 @@ fn main() {
         }
     }
     v_calories.sort();
+    v_calories.reverse();
 
     println!("---------------");
-    println!(
-        "Maximum number of calories is: {}",
-        v_calories[v_calories.len() - 1]
-    )
+    println!("Top 3 number of calories is:",);
+
+    let mut answer: u32 = 0;
+    for e in &v_calories[..3] {
+        println!("{}", e);
+        answer += e;
+    }
+
+    println!("Answer is: {}", answer);
 }
